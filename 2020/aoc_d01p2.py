@@ -24,18 +24,18 @@ if DEBUG:
 
 TARGET = 2020
 
-for x in puzzle_data:
-    for y in puzzle_data:
+for i1, x in enumerate(puzzle_data):
+    for i2, y in enumerate(puzzle_data):
         if x != y:
             z = TARGET - x - y
-            
+
             if z in puzzle_data:
                 if DEBUG:
                     print(x, y, z, puzzle_data.index(x), puzzle_data.index(y), puzzle_data.index(z))
-                
+
                 ANSWER = x * y * z
                 break
-        if ANSWER:
-            break
+    if ANSWER:
+        break
 
 print("AoC Day: " + DAY + " Year: " + YEAR + " part " + PART + ", this is the answer:", ANSWER)

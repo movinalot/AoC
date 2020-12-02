@@ -30,7 +30,7 @@ for x in puzzle_data:
     if y in puzzle_data:
         if DEBUG:
             print(x, y, puzzle_data.index(x), puzzle_data.index(y))
-        
+
         ANSWER = x * y
         break
 
