@@ -34,9 +34,8 @@ for x in puzzle_data:
     rule_digit_2 = int(values[0].split('-')[1])-1
     password = values[2]
 
-    if password[rule_digit_1] == rule_letter or password[rule_digit_2] == rule_letter:
+    if rule_letter in (password[rule_digit_1], password[rule_digit_2]):
         if password[rule_digit_1] != password[rule_digit_2]:
             ANSWER = ANSWER + 1
-
 
 print("AoC Day: " + DAY + " Year: " + YEAR + " part " + PART + ", answer:", ANSWER)
