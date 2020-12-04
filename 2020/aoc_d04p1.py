@@ -5,7 +5,7 @@ John McDonough
 """
 # pylint: disable=invalid-name
 
-TESTING = 1
+TESTING = 0
 TESTFILE = 0
 DEBUG = 0
 DAY = "04"
@@ -34,7 +34,7 @@ def process_puzzle_input(ext=".txt"):
 
 if TESTING:
     if TESTFILE:
-        PUZZLE_DATA = process_puzzle_input("_test.txt")
+        PUZZLE_DATA = process_puzzle_input("_test_part1.txt")
     else:
         PUZZLE_DATA = [
             {
