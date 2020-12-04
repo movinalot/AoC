@@ -3,7 +3,7 @@ John McDonough
  github - movinalot
  Advent of Code 2020
 """
-# pylint: disable=invalid-name
+# pylint: disable=invalid-name, too-many-boolean-expressions
 import re
 
 TESTING = 0
@@ -35,8 +35,8 @@ def process_puzzle_input(ext=".txt"):
 
 def year_check(year, b_year, e_year):
     """ Check year is correct length and falls in range """
-    
-    return (len(year) == 4 and (int(year) >= b_year and int(year) <= e_year))
+
+    return len(year) == 4 and (int(year) >= b_year and int(year) <= e_year)
 
 if TESTING:
     if TESTFILE:
@@ -114,7 +114,7 @@ for passport in PUZZLE_DATA:
         iyr_flag = year_check(passport['iyr'], 2010, 2020)
         eyr_flag = year_check(passport['eyr'], 2020, 2030)
 
-        if passport['ecl'] in ('amb' 'blu' 'brn' 'gry' 'grn' 'hzl' 'oth'):
+        if passport['ecl'] in 'amb' 'blu' 'brn' 'gry' 'grn' 'hzl' 'oth':
             ecl_flag = True
 
         if len(passport['pid']) == 9:
@@ -134,7 +134,7 @@ for passport in PUZZLE_DATA:
                 hgt_flag = True
 
         if len(passport['hcl']) == 7:
-            pattern = re.compile('#{1}[\da-f]{6}')
+            pattern = re.compile('#{1}[0-9a-f]{6}')
             if pattern.match(passport['hcl']):
                 hcl_flag = True
 
