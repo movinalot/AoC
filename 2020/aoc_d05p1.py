@@ -38,19 +38,10 @@ ANSWER = 0
 SEAT_ID = 0
 
 for bp in PUZZLE_DATA:
-    row = '0b'
-    col = '0b'
-    for x in bp[0:7]:
+    bp = bp.replace('F','0').replace('B','1').replace('L','0').replace('R','1')
+    row = '0b'+bp[0:7]
+    col = '0b'+bp[-3:]
 
-        if x == 'F':
-            row += '0'
-        else:
-            row += '1'
-    for x in bp[-3:]:
-        if x == 'L':
-            col += '0'
-        else:
-            col += '1'
     if int(row,2)*8+int(col,2) > SEAT_ID:
         SEAT_ID = int(row,2)*8+int(col,2)
 
