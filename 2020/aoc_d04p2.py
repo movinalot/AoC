@@ -100,45 +100,39 @@ if DEBUG:
 
 ANSWER = 0
 for passport in PUZZLE_DATA:
-
-    byr_flag = False
-    iyr_flag = False
-    eyr_flag = False
-    hgt_flag = False
-    hcl_flag = False
-    ecl_flag = False
-    pid_flag = False
-
     if passport.keys() >= REQ_KEYS:
-        byr_flag = year_check(passport['byr'], 1920, 2002)
-        iyr_flag = year_check(passport['iyr'], 2010, 2020)
-        eyr_flag = year_check(passport['eyr'], 2020, 2030)
+        if not year_check(passport['byr'], 1920, 2002):
+            continue
+        if not year_check(passport['iyr'], 2010, 2020):
+            continue
+        if not year_check(passport['eyr'], 2020, 2030):
+            continue
 
-        if passport['ecl'] in 'amb' 'blu' 'brn' 'gry' 'grn' 'hzl' 'oth':
-            ecl_flag = True
+        if not passport['ecl'] in 'amb' 'blu' 'brn' 'gry' 'grn' 'hzl' 'oth':
+            continue
 
-        if len(passport['pid']) == 9:
-            pid_flag = True
+        if not (len(passport['pid']) == 9 and passport['pid'].isnumeric()):
+            continue
 
         if passport['hgt'].endswith('in') or passport['hgt'].endswith('cm'):
-            if (
-                passport['hgt'].endswith('in') and
-                int(passport['hgt'][:-2]) >= 59 and int(passport['hgt'][:-2]) <= 76
-            ):
-                hgt_flag = True
+            if passport['hgt'].endswith('in'):
+                if not 59 <= int(passport['hgt'][:-2]) <= 76:
+                    continue
 
-            elif (
-                passport['hgt'].endswith('cm') and
-                int(passport['hgt'][:-2]) >= 150 and int(passport['hgt'][:-2]) <= 193
-            ):
-                hgt_flag = True
+            if passport['hgt'].endswith('cm'):
+                if not 150 <= int(passport['hgt'][:-2]) <= 193:
+                    continue
+        else:
+            continue
 
         if len(passport['hcl']) == 7:
             pattern = re.compile('#{1}[0-9a-f]{6}')
-            if pattern.match(passport['hcl']):
-                hcl_flag = True
+            if not pattern.match(passport['hcl']):
+                continue
+        else:
+            continue
 
-    if byr_flag and iyr_flag and eyr_flag and ecl_flag and pid_flag and hgt_flag and hcl_flag:
+        # if you get here the passport is valid
         ANSWER += 1
 
 print("AoC Day: " + DAY + " Year: " + YEAR + " part " + PART + ", answer:", ANSWER)
