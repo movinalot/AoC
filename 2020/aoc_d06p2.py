@@ -43,13 +43,19 @@ if TESTING:
                 ['a', 'b', 'c']
             ],
             [
-                ['a'], ['b'], ['c']
+                ['a'],
+                ['b'],
+                ['c']
             ],
             [
-                ['a', 'b'], ['a', 'c']
+                ['a', 'b'],
+                ['a', 'c']
             ],
             [
-                ['a'], ['a'], ['a'], ['a']
+                ['a'],
+                ['a'],
+                ['a'],
+                ['a']
             ],
             [
                 ['b']
@@ -64,6 +70,6 @@ if DEBUG:
 ANSWER = 0
 
 for group in PUZZLE_DATA:
-    ANSWER += len(set.intersection(*[set(x) for x in group]))
+    ANSWER += len(set.intersection(*[set(person) for person in group]))
 
 print("AoC Day: " + DAY + " Year: " + YEAR + " part " + PART + ", answer:", ANSWER)
