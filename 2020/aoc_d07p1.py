@@ -62,7 +62,7 @@ for bag_rule in PUZZLE_DATA:
     bag_color = bag_rule.split()[0] + '_' + bag_rule.split()[1]
     if not bag_color in BAG_RULES.keys():
         if bag_rule.split('contain')[1].strip() == 'no other bags.':
-            BAG_RULES[bag_color] = {'no_other_bags':0}
+            BAG_RULES[bag_color] = {'no_other_bags':'0'}
         else:
             bag_types = {}
             for _ in bag_rule.split('contain')[1].split(','):
