@@ -26,19 +26,19 @@ if DEBUG:
     print(len(puzzle_data), puzzle_data)
 
 ELF_CALORIES = []
-total_elf_calories = 0
+TOTAL_ELF_CALORIES = 0
 
 for elf_calories in puzzle_data:
 
     # Add elf total when newline encountered
     if elf_calories == "\n":
-        ELF_CALORIES.append(total_elf_calories)
-        total_elf_calories = 0
+        ELF_CALORIES.append(TOTAL_ELF_CALORIES)
+        TOTAL_ELF_CALORIES = 0
     else:
-        total_elf_calories += int(elf_calories)
+        TOTAL_ELF_CALORIES += int(elf_calories)
 
 # Get the last elf total
-ELF_CALORIES.append(total_elf_calories)
+ELF_CALORIES.append(TOTAL_ELF_CALORIES)
 
 max_value = max(ELF_CALORIES)
 max_index = ELF_CALORIES.index(max_value) + 1

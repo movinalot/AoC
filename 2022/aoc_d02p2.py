@@ -8,11 +8,11 @@ TESTING = 0
 DEBUG = 0
 DAY = "02"
 YEAR = "2022"
-PART = "1"
+PART = "2"
 ANSWER = None
 
 if TESTING:
-    puzzle_data = [ 
+    puzzle_data = [
         "A Y",
         "B X",
         "C Z"
@@ -26,7 +26,7 @@ else:
 if DEBUG:
     print(len(puzzle_data), puzzle_data)
 
-total_score = 0
+TOTAL_SCORE = 0
 
 # "A X" = 3
 # "A Y" = 4
@@ -41,35 +41,35 @@ total_score = 0
 # "C Z" = 7
 
 for game in puzzle_data:
-    
+
     if game == "A X":
-        total_score += 3
-    
+        TOTAL_SCORE += 3
+
     if game == "A Y":
-        total_score += 4
+        TOTAL_SCORE += 4
 
     if game == "A Z":
-        total_score += 8
+        TOTAL_SCORE += 8
 
     if game == "B X":
-        total_score += 1
-    
+        TOTAL_SCORE += 1
+
     if game == "B Y":
-        total_score += 5
+        TOTAL_SCORE += 5
 
     if game == "B Z":
-        total_score += 9
+        TOTAL_SCORE += 9
 
     if game == "C X":
-        total_score += 2
-    
+        TOTAL_SCORE += 2
+
     if game == "C Y":
-        total_score += 6
+        TOTAL_SCORE += 6
 
     if game == "C Z":
-        total_score += 7
+        TOTAL_SCORE += 7
 
-ANSWER = total_score
+ANSWER = TOTAL_SCORE
 
 print(
     "AoC Day: " + DAY + " Year: " + YEAR +

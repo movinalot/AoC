@@ -8,22 +8,19 @@ TESTING = 0
 DEBUG = 0
 DAY = "01"
 YEAR = "2022"
-PART = "1"
+PART = "2"
 ANSWER = None
 
 
-def Nmaxelements(list_in, N):
+def num_max_elements(list_in, num_elements):
+    """ Return N number of Max Elements """
+
     final_list = []
 
-    for i in range(0, N):
-        max_element = 0
-
-        for j in range(len(list_in)):
-            if list_in[j] > max_element:
-                max_element = list_in[j]
-
-        list_in.remove(max_element)
+    for _ in range(0, num_elements):
+        max_element = max(list_in)
         final_list.append(max_element)
+        list_in.remove(max_element)
 
     return final_list
 
@@ -43,21 +40,21 @@ if DEBUG:
     print(len(puzzle_data), puzzle_data)
 
 ELF_CALORIES = []
-total_elf_calories = 0
+TOTAL_ELF_CALORIES = 0
 
 for elf_calories in puzzle_data:
 
     # Add elf total when newline encountered
     if elf_calories == "\n":
-        ELF_CALORIES.append(total_elf_calories)
-        total_elf_calories = 0
+        ELF_CALORIES.append(TOTAL_ELF_CALORIES)
+        TOTAL_ELF_CALORIES = 0
     else:
-        total_elf_calories += int(elf_calories)
+        TOTAL_ELF_CALORIES += int(elf_calories)
 
 # Get the last elf total
-ELF_CALORIES.append(total_elf_calories)
+ELF_CALORIES.append(TOTAL_ELF_CALORIES)
 
-ANSWER = sum(Nmaxelements(ELF_CALORIES, 3))
+ANSWER = sum(num_max_elements(ELF_CALORIES, 3))
 
 print(
     "AoC Day: " + DAY + " Year: " + YEAR +
