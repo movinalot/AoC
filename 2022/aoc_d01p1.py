@@ -48,7 +48,7 @@ if DEBUG:
     print(f"Max Index: {max_index}")
     print(ELF_CALORIES)
 
-ANSWER = max_value = max(ELF_CALORIES)
+ANSWER = max_value
 
 print(
     "AoC Day: " + DAY + " Year: " + YEAR +
