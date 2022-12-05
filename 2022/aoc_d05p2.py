@@ -7,7 +7,7 @@ import re
 import string
 
 TESTING = 0
-DEBUG = 1
+DEBUG = 0
 DAY = "05"
 YEAR = "2022"
 PART = "2"
@@ -88,7 +88,6 @@ for instruction in INSTRUCTIONS:
     to_stack = int(instruction.split(" ")[5])
 
     items = CONTAINER_STACKS[from_stack-1][-num_items:]
-    print("items: ", items)
     del CONTAINER_STACKS[from_stack-1][-num_items:]
     for item in items:
         CONTAINER_STACKS[to_stack-1].append(item)
