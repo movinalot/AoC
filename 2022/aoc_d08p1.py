@@ -51,10 +51,8 @@ for i in range(len(puzzle_data)):
             TREE_VISIBLE_ARRAY[i].append('N')
 
             # Check North visibility
-            # print("North")
             NORTH_VISIBLE = True
             for north in range(i-1, -1, -1):
-                #print("Column: ", j, "Row: ", north)
                 if TREE_HEIGHT_ARRAY[i][j] > TREE_HEIGHT_ARRAY[north][j]:
                     continue
                 NORTH_VISIBLE = False
@@ -62,9 +60,7 @@ for i in range(len(puzzle_data)):
 
             # Check South visibility
             SOUTH_VISIBLE = True
-            # print("South")
             for south in range(i+1, len(TREE_HEIGHT_ARRAY), 1):
-                #print("Column: ", j, "Row: ", south)
                 if TREE_HEIGHT_ARRAY[i][j] > TREE_HEIGHT_ARRAY[south][j]:
                     continue
                 SOUTH_VISIBLE = False
@@ -72,9 +68,7 @@ for i in range(len(puzzle_data)):
 
             # Check East visibility
             EAST_VISIBLE = True
-            # print("East")
             for east in range(j-1, -1, -1):
-                #print("Column: ", east, "Row: ", i)
                 if TREE_HEIGHT_ARRAY[i][j] > TREE_HEIGHT_ARRAY[i][east]:
                     continue
                 EAST_VISIBLE = False
@@ -82,9 +76,7 @@ for i in range(len(puzzle_data)):
 
             # Check West visibility
             WEST_VISIBLE = True
-            # print("West")
             for west in range(j+1, len(TREE_HEIGHT_ARRAY[i]), 1):
-                #print("Column: ", west, "Row: ", i)
                 if TREE_HEIGHT_ARRAY[i][j] > TREE_HEIGHT_ARRAY[i][west]:
                     continue
                 WEST_VISIBLE = False
