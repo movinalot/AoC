@@ -30,11 +30,11 @@ else:
         for line in f:
             puzzle_data.append(line)
 
-SCHEMATIC = []
-PN_SUM = 0
-
 if DEBUG:
     print(len(puzzle_data), puzzle_data)
+
+SCHEMATIC = []
+PN_SUM = 0
 
 for line in puzzle_data:
     SCHEMATIC.append(line.strip())
