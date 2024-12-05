@@ -11,6 +11,26 @@ YEAR = "2024"
 PART = "1"
 ANSWER = None
 
+
+def is_safe(reports):
+    """Check if the reports are safe"""
+
+    if DEBUG:
+        print("checking if reports are safe")
+
+    safe_reports = True
+
+    for i in range(len(reports) - 1):
+        diff_levels = abs(int(reports[i]) - int(reports[i + 1]))
+        if DEBUG:
+            print(int(reports[i]), int(reports[i + 1]), diff_levels)
+        if not 0 < diff_levels <= 3:
+            safe_reports = False
+            break
+
+    return safe_reports
+
+
 if TESTING:
     puzzle_data = [
         "7 6 4 2 1",
@@ -18,7 +38,7 @@ if TESTING:
         "9 7 6 2 1",
         "1 3 2 4 5",
         "8 6 4 4 1",
-        "1 3 6 7 9"
+        "1 3 6 7 9",
     ]
 else:
     with open("puzzle_data_" + DAY + "_" + YEAR + ".txt", encoding="utf-8") as f:
@@ -37,19 +57,7 @@ for line in puzzle_data:
         if DEBUG:
             print("line", line, "is sorted")
 
-        SAFE = True
-        for i in range(len(line)-1):
-            DIFF_LEVELS = abs(int(line[i]) - int(line[i+1]))
-            if DEBUG:
-                print(int(line[i]), int(line[i+1]), DIFF_LEVELS)
-            if 0 < DIFF_LEVELS <= 3:
-                pass
-            else:
-                if DEBUG:
-                    print("line", line, "is not safe")
-                SAFE = False
-                break
-        if SAFE:
+        if is_safe(line):
             if DEBUG:
                 print("line", line, "is safe")
             TOTAL_SAFE += 1
