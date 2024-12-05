@@ -13,14 +13,18 @@ YEAR = "2024"
 PART = "1"
 ANSWER = None
 
+
 def use_regex(input_text):
-    """ Find all regex in input_text """
+    """Find all regex in input_text"""
 
     pattern = re.compile(r"mul\(\d*,\d*\)", re.IGNORECASE)
     return pattern.findall(input_text)
 
+
 if TESTING:
-    puzzle_data = ["xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"]
+    puzzle_data = [
+        "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
+    ]
 else:
     with open("puzzle_data_" + DAY + "_" + YEAR + ".txt", encoding="utf-8") as f:
         puzzle_data = []
@@ -30,7 +34,7 @@ else:
 if DEBUG:
     print(len(puzzle_data), puzzle_data)
 
-SUM_MUL_OPS= 0
+SUM_MUL_OPS = 0
 
 for line in puzzle_data:
     matches = use_regex(line)
