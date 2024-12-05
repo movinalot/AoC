@@ -12,14 +12,7 @@ PART = "2"
 ANSWER = None
 
 if TESTING:
-    puzzle_data = [
-        "3   4",
-        "4   3",
-        "2   5",
-        "1   3",
-        "3   9",
-        "3   3"
-    ]
+    puzzle_data = ["3   4", "4   3", "2   5", "1   3", "3   9", "3   3"]
 else:
     with open("puzzle_data_" + DAY + "_" + YEAR + ".txt", encoding="utf-8") as f:
         puzzle_data = []
