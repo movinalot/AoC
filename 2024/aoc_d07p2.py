@@ -10,7 +10,7 @@ TESTING = 0
 DEBUG = 0
 DAY = "07"
 YEAR = "2024"
-PART = "1"
+PART = "2"
 ANSWER = None
 
 
@@ -33,7 +33,9 @@ def check_calibrations(calibration_data, product_set):
             if DEBUG:
                 print(current_value, op, operand_values[i + 1])
 
-            if op == "+":
+            if op == "|":
+                current_value = int(str(current_value) + str(operand_values[i + 1]))
+            elif op == "+":
                 current_value += operand_values[i + 1]
             elif op == "*":
                 current_value *= operand_values[i + 1]
@@ -76,6 +78,10 @@ for line in puzzle_data:
     calibration = check_calibrations(line, "+*")
     if calibration is not None:
         TOTAL_CALIBRATION += calibration
+    else:
+        calibration = check_calibrations(line, "+*|")
+        if calibration is not None:
+            TOTAL_CALIBRATION += calibration
 
 ANSWER = TOTAL_CALIBRATION
 
